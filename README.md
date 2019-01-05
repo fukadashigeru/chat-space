@@ -7,7 +7,7 @@
 
 ### Association
 - belongs_to :group
-- belongs_to :user
+- belongs_to :users
 
 ## messageテーブル
 
@@ -20,27 +20,29 @@
 
 ### Association
 - belongs_to :group
-- belongs_to :user
+- belongs_to :users
 
 
 ## groupテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|index: true,null: false|
 
 ### Association
+- has_many :users, through: members
 - has_many :members
 - has_many :messages
 
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|mail|string|unique: true|
+|name|string|index: true, null: false, unique: true|
+|mail|string|null: false, unique: true|
 
 ### Association
+- has_many :groups, through: members
 - has_many :members
 - has_many :messages
