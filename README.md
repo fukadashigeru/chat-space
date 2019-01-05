@@ -7,7 +7,7 @@
 
 ### Association
 - belongs_to :group
-- belongs_to :users
+- belongs_to :user
 
 ## messageテーブル
 
@@ -20,7 +20,7 @@
 
 ### Association
 - belongs_to :group
-- belongs_to :users
+- belongs_to :user
 
 
 ## groupテーブル
