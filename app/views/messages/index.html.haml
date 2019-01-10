@@ -5,10 +5,12 @@
         .chat-side-top-user-name
           seo
         .chat-side__user--icon
-          %a.chat-side__user--new-group{:href => "/groups/new"}
-            %i.fa.fa-edit
-          %a.chat-side__user--edit-user{:href => "/users/edit"}
-            %i.fa.fa-cog
+          .chat-side__user--new-group
+            = link_to new_message_path, method: :get do
+              %i.fa.fa-edit
+          .chat-side__user--edit-user
+            = link_to new_message_path, method: :get do
+              %i.fa.fa-cog
     .chat-side-bottom
       .chat-side-bottom-group
         .chat-side-bottom-group-name
