@@ -5,10 +5,10 @@
         seo
       .chat-side__user-icon
         .chat-side__user-icon--new-group
-          = link_to new_message_path, method: :get do
+          = link_to '/messages', method: :get do
             %i.fa.fa-edit
         .chat-side__user-icon--edit-user
-          = link_to new_message_path, method: :get do
+          = link_to '/messages', method: :get do
             %i.fa.fa-cog
   .chat-side__groups
     .chat-side__groups-list
