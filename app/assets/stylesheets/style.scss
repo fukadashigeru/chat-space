@@ -1,48 +1,50 @@
+@import "variable";
+
 .chat-side{
   height: 100vh;
-  width:300px;
-  float:left;
+  width: 300px;
+  float: left;
   &__user{
     height: 120px;
     background-color: #253141;
-    padding:0 20px;
+    padding: 0 20px;
     position: relative;
     &-content{
-      width:260px;
+      width: 260px;
       height: 40px;
       position: absolute;
       line-height: 40px;
       margin: auto 0;
-      top:0;
+      top: 0;
       bottom: 0;
       .chat-side__user-name{
-        width:180px;
-        color:#FFFFFF;
+        width: 180px;
+        color: $side_text_color;
         font-size: 16px;
         font-weight: bold;
-        float:left;
+        float: left;
       }
       .chat-side__user-icon{
         height: 40px;
-        float:right;
+        float: right;
         &--new-group{
-          color: #fff;
+          color: $side_text_color;
           margin-left: 1px;
           position: relative;
           display: inline-block;
-          float:left;
+          float: left;
           .fa-edit{
-            color:white;
+            color: white;
           }
         }
         &--edit-user{
-          color: #fff;
+          color: $side_text_color;
           position: relative;
           display: inline-block;
-          float:left;
+          float: left;
           margin-left: 5px;
           .fa-cog{
-            color:white;
+            color: white;
           }
         }
       }
@@ -56,19 +58,17 @@
       .chat-side__group{
         &-name{
           font-size: 15px;
-          margin-bottom:5px;
-          color:#FFFFFF;
+          margin-bottom: 5px;
+          color: $side_text_color;
         }
         &-message{
           font-size: 11px;
-          color:#FFFFFF;
+          color: $side_text_color;
         }
       }
     }
   }
 }
-
-
 
 .fa{
     display: inline-block;
@@ -77,74 +77,70 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-
 }
-
-
 
 .chat-main{
   height: 100vh;
   width: calc(100% - 300px);
-  float:left;
+  float: left;
   background-color: #FFFFFF;
   position: relative;
   &__header{
     height: 120px;
-    border:1px solid #eeeeee;
-    padding:0 40px;
+    border: 1px solid #eeeeee;
+    padding: 0 40px;
     position: relative;
     &-group{
-      padding-top:35px;
+      padding-top: 35px;
       &__name{
-        font-size:20px;
-        color:#333333;
+        font-size: 20px;
+        color: #333333;
         padding-bottom: 15px;
       }
       &__member{
-        font-size:12px;
-        color:#999999;
+        font-size: 12px;
+        color: #999999;
       }
     }
     &-edit{
       position: absolute;
-      top:28px;
-      right:40px;
-      border:1px solid #38AEF0;
+      top: 28px;
+      right: 40px;
+      border: 1px solid #38AEF0;
       height: 40px;
-      font-size:15px;
-      color:#999999;
+      font-size: 15px;
+      color: #999999;
       line-height: 40px;
       padding: 0 20px;
     }
   }
   &__body{
-    height:calc(100vh - 120px - 48px - 90px);
+    height: calc(100vh - 120px - 48px - 90px);
     background-color: #EEEEEE;
     padding-left: 40px;
-    padding-top:46px;
+    padding-top: 46px;
     &__message-box{
-      margin-bottom:40px;
+      margin-bottom: 40px;
       &__name-time{
         .chat-main__body__message-box__name{
-        font-size: 16px;
-        color:#434A54;
-        margin-bottom:10px;
-        font-weight: bold;
-        float:left;
+          font-size: 16px;
+          color: #434A54;
+          margin-bottom: 10px;
+          font-weight: bold;
+          float: left;
         }
         .chat-main__body__message-box__time{
-          color:gray;
+          color: gray;
           font-size: 10px;
-          float:left;
+          float: left;
           margin-left: 10px;
           line-height: 30px;
         }
       }
       &__text{
-        font-size:14px;
-        color:#434A54;
-        clear:both;
+        font-size: 14px;
+        color: #434A54;
+        clear: both;
       }
     }
   }
@@ -153,21 +149,21 @@
     height: 90px;
     position: fixed;
     bottom: 0;
-    width:calc(100vw - 300px - 80px);
+    width: calc(100vw - 300px - 80px);
     line-height: 50px;
     padding: 0 40px;
     &-form{
       height: 90px;
       position: relative;
       .chat-main__footer-body{
-        width:calc(100% - 70px);
+        width: calc(100% - 70px);
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         .field_with_errors{
           position: relative;
           .message{
-            width:calc(100% - 15px);
+            width: calc(100% - 15px);
             height: 50px;
           }
         }
@@ -175,20 +171,22 @@
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          right:30px;
+          right: 30px;
           #message_image{
             display: none;
           }
         }
       }
       .submit{
-        height:50px;
+        height: 50px;
         background-color: #38AEF0;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         right: 0;
-        width:70px;
+        width: 70px;
+        color: $side_text_color;
+
       }
     }
   }
