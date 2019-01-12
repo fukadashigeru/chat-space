@@ -1,0 +1,64 @@
+.chat-side
+  .chat-side__user
+    .chat-side__user-content
+      .chat-side__user-name
+        seo
+      .chat-side__user-icon
+        .chat-side__user-icon--new-group
+          = link_to '/messages', method: :get do
+            %i.fa.fa-edit
+        .chat-side__user-icon--edit-user
+          = link_to '/messages', method: :get do
+            %i.fa.fa-cog
+  .chat-side__groups
+    .chat-side__groups-list
+      .chat-side__group
+        .chat-side__group-name
+          group-name
+        .chat-side__group-message
+          group-message
+.chat-main
+  .chat-main__header
+    .chat-main__header-group
+      .chat-main__header-group__name
+        Sample
+      .chat-main__header-group__member
+        Members:seo,neko
+    .chat-main__header-edit
+      Edit
+  .chat-main__body
+    .chat-main__body__message-box
+      .chat-main__body__message-box__name-time
+        .chat-main__body__message-box__name
+          shigeru1
+        .chat-main__body__message-box__time
+          2018/01/12
+      .chat-main__body__message-box__text
+        なるほど
+    .chat-main__body__message-box
+      .chat-main__body__message-box__name-time
+        .chat-main__body__message-box__name
+          shigeru2
+        .chat-main__body__message-box__time
+          2018/01/12
+      .chat-main__body__message-box__text
+        なるほど2
+    .chat-main__body__message-box
+      .chat-main__body__message-box__name-time
+        .chat-main__body__message-box__name
+          shigeru3
+        .chat-main__body__message-box__time
+          2018/01/12
+      .chat-main__body__message-box__text
+        なるほど3
+  .chat-main__footer
+    %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/2182/messages", :enctype => "multipart/form-data", :method => "post"}
+      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+      %input{:name => "authenticity_token", :type => "hidden", :value => "CanJr+tbhtfzJkWLA5609Ng2X2cuRNRnX3EUjqzpkfy2/c9lawJA/k6c0j4HZwbPq8RQ5HGlppUtqtWuIpIf5w=="}/
+      .chat-main__footer-body
+        .field_with_errors
+          %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text", :value => ""}/
+        %label.chat-file{:for => "message_image"}
+          %input#message_image.image{:name => "message[image]", :type => "file"}/
+          %i.fa.fa-image
+      %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
