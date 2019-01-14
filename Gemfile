@@ -76,3 +76,5 @@ gem "font-awesome-rails"
 gem "devise"
 gem "bourbon"
 gem 'flexbox_rb'
+gem 'carrierwave'
+gem 'mini_magick'
