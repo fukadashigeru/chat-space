@@ -10,37 +10,13 @@
         shigeru
     .chat-main__header-edit
       Edit
-  .chat-main__body
-    .chat-main__body__message-box
-      .chat-main__body__message-box__name-time
-        .chat-main__body__message-box__name
-          shigeru1
-        .chat-main__body__message-box__time
-          2018/01/12
-      .chat-main__body__message-box__text
-        なるほど
-    .chat-main__body__message-box
-      .chat-main__body__message-box__name-time
-        .chat-main__body__message-box__name
-          shigeru2
-        .chat-main__body__message-box__time
-          2018/01/12
-      .chat-main__body__message-box__text
-        なるほど2
-    .chat-main__body__message-box
-      .chat-main__body__message-box__name-time
-        .chat-main__body__message-box__name
-          shigeru3
-        .chat-main__body__message-box__time
-          2018/01/12
-      .chat-main__body__message-box__text
-        なるほど3
-  .chat-main__footer
-    .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+  .messages
+    = render partial: 'message', collection: @messages
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
