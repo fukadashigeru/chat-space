@@ -70,9 +70,13 @@ group :production do
      gem 'unicorn'
 end
 
+
+gem 'pry-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem "font-awesome-rails"
 gem "devise"
 gem "bourbon"
 gem 'flexbox_rb'
+gem 'carrierwave'
+gem 'mini_magick'
