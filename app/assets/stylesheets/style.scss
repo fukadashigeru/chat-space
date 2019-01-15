@@ -115,33 +115,30 @@
     }
   }
   .messages{
-    height: calc(100vh - 120px - 48px - 90px);
+    height: calc(100vh - 122px - 90px);
     background-color: #EEEEEE;
     padding-left: 40px;
-    padding-top: 46px;
-    &__message-box{
-      margin-bottom: 40px;
-      &__name-time{
-        .chat-main__body__message-box__name{
-          font-size: 16px;
-          color: #434A54;
-          margin-bottom: 10px;
-          font-weight: bold;
-          float: left;
-        }
-        .chat-main__body__message-box__time{
-          color: gray;
-          font-size: 10px;
-          float: left;
-          margin-left: 10px;
-          line-height: 30px;
-        }
-      }
-      &__text{
-        font-size: 14px;
+    .upper-message{
+      padding-top: 40px;
+      &__user-name{
+        font-size: 16px;
         color: #434A54;
-        clear: both;
+        margin-bottom: 10px;
+        font-weight: bold;
+        float: left;
+        }
+      &__date{
+        color: gray;
+        font-size: 10px;
+        float: left;
+        margin-left: 10px;
+        line-height: 30px;
       }
+    }
+    .lower-meesage{
+      clear: both;
+      font-size: 14px;
+      color: #434A54;
     }
   }
   .form{
