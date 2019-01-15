@@ -5,9 +5,11 @@
   .chat-main__header
     .chat-main__header-group
       .chat-main__header-group__name
-        Smaple
+        = @group.name
       .chat-main__header-group__member
-        shigeru
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .chat-main__header-edit
       Edit
   .messages
@@ -17,6 +19,6 @@
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
       .form__mask
         = f.label :image, class: 'form__mask__image' do
-          = fa_icon 'picture-o', class: 'icon'
+          = fa_icon 'picture-o', class: 'icon3'
           = f.file_field :image, class: 'hidden'
       = f.submit 'Send', class: 'form__submit'
