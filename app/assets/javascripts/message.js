@@ -34,13 +34,12 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      var h = $('.messages').get(0).scrollHeight;
       $('.messages').append(html)
       $('.form__message').val('')
       $('#message_image').val('')
       $('.form__submit').prop('disabled', false);
       $('.messages').animate({
-        scrollTop: h
+        scrollTop: $('.messages').get(0).scrollHeight
       })
     })
     .fail(function(){
