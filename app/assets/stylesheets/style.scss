@@ -119,6 +119,7 @@
     height: calc(100vh - 122px - 90px);
     background-color: #EEEEEE;
     padding-left: 40px;
+    overflow: scroll;
     .upper-message{
       padding-top: 40px;
       &__user-name{
