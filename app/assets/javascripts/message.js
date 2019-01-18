@@ -2,6 +2,7 @@ $(function(){
   function buildHTML(message){
     var date = new Date()
     var url = message.image.url
+    var created_at = message.created_at
     var image = url == null ? '' : '<img class="lower-message__image" src= '+ url + '/>';
     var html = `<div class='message'>
                   <div class='upper-message'>
@@ -9,7 +10,7 @@ $(function(){
                       ${message.user_name}
                     </div>
                   <div class='upper-message__date'>
-                    ${ date.getFullYear() }/${ ("0"+(date.getMonth() + 1)).slice(-2) }/${ ("0"+date.getDate()).slice(-2) }  ${ ("0"+date.getHours()).slice(-2) }:${ ("0"+date.getMinutes()).slice(-2) }
+                    ${ created_at }
                   </div>
                 </div>
                 <div class='lower-meesage'>
