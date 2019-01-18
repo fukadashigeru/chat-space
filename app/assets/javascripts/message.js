@@ -1,11 +1,8 @@
 $(function(){
   function buildHTML(message){
     var date = new Date()
-    // console.log(message)
     var url = message.image.url
-    // console.log(url)
     var image = url == null ? '' : '<img class="lower-message__image" src= '+ url + '/>';
-    console.log(image)
     var html = `<div class='message'>
                   <div class='upper-message'>
                     <div class='upper-message__user-name'>
