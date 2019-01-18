@@ -21,7 +21,7 @@ $(function(){
                 </div>`
     return html;
   }
-  $('#new_message').on('wwwwturbolinks: submit', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var href = window.location.href + ''
