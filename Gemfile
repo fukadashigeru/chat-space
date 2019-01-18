@@ -85,3 +85,4 @@ gem "bourbon"
 gem 'flexbox_rb'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jquery-rails'
