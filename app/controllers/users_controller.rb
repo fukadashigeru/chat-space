@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def edit
   end
   def update
@@ -8,15 +9,17 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
- def search
-   @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
-   respond_to do |format|
-     format.html
-     format.json
-   end
- end
-
+  def show
+    @user = User.find(params[:id])
+  end
+  def search
+    @users = User.where.not(id: Group.find(params[:group_id]).users.ids)
+    @users = @users.where('name LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
   private
 
   def user_params
