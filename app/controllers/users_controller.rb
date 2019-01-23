@@ -11,6 +11,10 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
   def search
     @users = User.where.not(id: Group.find(params[:group_id]).users.ids)

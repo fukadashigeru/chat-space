@@ -1,9 +1,8 @@
 $(function() {
   var search_list = $("#user-search-result");
-
-
-  function appendProduct(user) {
+  function appendUser(user) {
     var html = `<div class='chat-group-user clearfix' id='chat-group-user-22'>
+                  <input name='group[user_ids][]' type='hidden' value=${user.id}>
                   <p class='chat-group-user__name'>
                     ${user.name}
                   </p>
@@ -11,7 +10,14 @@ $(function() {
                 </div>`
     search_list.append(html);
   }
-
+  function addUser(user) {
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+                  <input name='group[user_ids][]' type='hidden' value=${user.id}>
+                  <p class='chat-group-user__name'>${user.name}</p>
+                  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                </div>`
+    $("#chat-group-users").append(html);
+  }
   function appendNoUser(user) {
     var html = `<div>
                   ${ user }
@@ -25,7 +31,6 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     var group_id = $("#group_id").text();
-    console.log(group_id)
     $.ajax({
       type: 'GET',
       url: '/users/search',
@@ -33,12 +38,11 @@ $(function() {
       dataType: 'json'
     })
     .done(function(users) {
-      console.log(users)
       $("#user-search-result").empty();
       if (input.length !== 0){
         if (users.length !== 0) {
           users.forEach(function(user){
-            appendProduct(user);
+            appendUser(user);
           });
         }
         else {
@@ -49,37 +53,20 @@ $(function() {
         appendNoInput();
       }
     })
-    // .fail(function() {
-    //   alert(input);
-    // })
-    // })
+  });
+  $(document).on("click", ".chat-group-user__btn--add", function () {
+    var user_id = $(this).attr("data-user-id");
+    $(this).parent().remove();
+    $.ajax({
+      type: 'GET',
+      url: '/users/' + user_id,
+      dataType: 'json'
+    })
+    .done(function(user) {
+      addUser(user);
+    })
+  });
+  $(document).on("click", ".chat-group-user__btn--remove", function () {
+    $(this).parent().remove();
   });
 });
-
-//   $(".search__query").on("keyup", function() {
-//     var input = $(".search__query").val();
-
-//     $.ajax({
-//       type: 'GET',
-//       url: '/products/search',
-//       data: { keyword: input },
-//       dataType: 'json'
-//     })
-//     .done(function(products) {
-//       console.log("検索中")
-//       $(".listview.js-lazy-load-images").empty();
-//       console.log(products)
-//       if (products.length !== 0) {
-//         products.forEach(function(product){
-//           appendProduct(product);
-//         });
-//       }
-//       else {
-//         appendNoProduct("一致する映画はありません");
-//       }
-//     })
-//     .fail(function() {
-//       alert('映画検索に失敗しました');
-//     })
-//   });
-// });
