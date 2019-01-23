@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
     end
   end
   def edit
-    @group_id = params[:id]
   end
   def update
     if @group.update(group_params)

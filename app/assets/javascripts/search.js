@@ -31,10 +31,14 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     var group_id = $("#group_id").text();
+    var users = $('input[name="group[user_ids][]"]')
+    var ids = users.map(function(){
+      return $(this).val();
+    }).get();
     $.ajax({
       type: 'GET',
       url: '/users/search',
-      data: { keyword: input , group_id:group_id},
+      data: { keyword: input , group_id: group_id, ids: ids},
       dataType: 'json'
     })
     .done(function(users) {

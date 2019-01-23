@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
   end
   def search
-    @users = User.where.not(id: Group.find(params[:group_id]).users.ids)
+    @users = User.where.not(id: params[:ids])
     @users = @users.where('name LIKE(?)', "%#{params[:keyword]}%")
     respond_to do |format|
       format.html
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     end
   end
   private
-
   def user_params
     params.require(:user).permit(:name,:email)
   end
