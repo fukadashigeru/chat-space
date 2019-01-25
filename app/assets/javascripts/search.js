@@ -23,10 +23,6 @@ $(function() {
                 </div>`
     search_list.append(html);
   }
-  function appendNoInput() {
-    var html = ''
-    search_list.append(html);
-  }
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     var users = $('input[name="group[user_ids][]"]')
@@ -51,9 +47,6 @@ $(function() {
           appendNoUser("一致するチャットメンバーはありません");
         }
       }
-      // else{
-      //   appendNoInput();
-      // }
     })
   });
   $(document).on("click", ".chat-group-user__btn--add", function () {
