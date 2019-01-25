@@ -1,5 +1,32 @@
 $(function(){
-setInterval(update, 10000);
+  setInterval(update, 10000);
+  $('#new_message').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    var href = window.location.href + ''
+    $.ajax({
+      url: href,
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.messages').append(html)
+      $('.form__message').val('')
+      $('#message_image').val('')
+      $('.form__submit').prop('disabled', false);
+      $('.messages').animate({
+        scrollTop: $('.messages').get(0).scrollHeight
+      })
+    })
+    .fail(function(){
+      alert('メッセージを入力してください。');
+      $('.form__submit').prop('disabled', false);
+    })
+  });
 });
 function update(){
   var last_message_id = $('.message:last').attr('value');
@@ -20,7 +47,7 @@ function update(){
 }
 function buildHTML(message){
   var date = new Date()
-  var url = message.image.url
+  var url = message.image_url
   var created_at = message.created_at
   var image = url == null ? '' : '<img class="lower-message__image" src= '+ url + '/>';
   var html = `<div class='message' value=${message.id}>
@@ -40,30 +67,3 @@ function buildHTML(message){
               </div>`
   return html;
 }
-$('#new_message').on('submit', function(e){
-  e.preventDefault();
-  var formData = new FormData(this);
-  var href = window.location.href + ''
-  $.ajax({
-    url: href,
-    type: "POST",
-    data: formData,
-    dataType: 'json',
-    processData: false,
-    contentType: false
-  })
-  .done(function(data){
-    var html = buildHTML(data);
-    $('.messages').append(html)
-    $('.form__message').val('')
-    $('#message_image').val('')
-    $('.form__submit').prop('disabled', false);
-    $('.messages').animate({
-      scrollTop: $('.messages').get(0).scrollHeight
-    })
-  })
-  .fail(function(){
-    alert('メッセージを入力してください。');
-    $('.form__submit').prop('disabled', false);
-  })
-})
