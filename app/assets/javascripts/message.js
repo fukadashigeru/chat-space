@@ -1,6 +1,6 @@
 $(function(){
   $(function(){
-  setInterval(update, 15000);
+  setInterval(update, 10000);
   });
   function update(){
     var last_message_id = $('.message:last').attr('value');
