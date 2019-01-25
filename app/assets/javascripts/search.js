@@ -30,11 +30,9 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     var users = $('input[name="group[user_ids][]"]')
-    console.log(users)
     var ids = users.map(function(){
       return $(this).val();
     }).get();
-    console.log()
     $.ajax({
       type: 'GET',
       url: '/users/search',
