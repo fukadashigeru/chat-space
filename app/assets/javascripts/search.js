@@ -1,8 +1,7 @@
 $(function() {
   var search_list = $("#user-search-result");
   function appendUser(user) {
-    var html = `<div class='chat-group-user clearfix' id='chat-group-user-22'>
-                  <input name='group[user_ids][]' type='hidden' value=${user.id}>
+    var html = `<div class='chat-group-user clearfix'>
                   <p class='chat-group-user__name'>
                     ${user.name}
                   </p>
@@ -11,7 +10,7 @@ $(function() {
     search_list.append(html);
   }
   function addUser(user) {
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+    var html = `<div class='chat-group-user clearfix js-chat-member'>
                   <input name='group[user_ids][]' type='hidden' value=${user.id}>
                   <p class='chat-group-user__name'>${user.name}</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
@@ -30,15 +29,17 @@ $(function() {
   }
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-    var group_id = $("#group_id").text();
+    console.log(input)
     var users = $('input[name="group[user_ids][]"]')
+    console.log(users)
     var ids = users.map(function(){
       return $(this).val();
     }).get();
+    console.log()
     $.ajax({
       type: 'GET',
       url: '/users/search',
-      data: { keyword: input , group_id: group_id, ids: ids},
+      data: { keyword: input , ids: ids},
       dataType: 'json'
     })
     .done(function(users) {
@@ -53,9 +54,9 @@ $(function() {
           appendNoUser("一致するチャットメンバーはありません");
         }
       }
-      else{
-        appendNoInput();
-      }
+      // else{
+      //   appendNoInput();
+      // }
     })
   });
   $(document).on("click", ".chat-group-user__btn--add", function () {

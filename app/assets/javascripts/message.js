@@ -1,10 +1,31 @@
 $(function(){
+  $(function(){
+  setInterval(update, 15000);
+  });
+  function update(){
+    var last_message_id = $('.message:last').attr('value');
+    console.log(last_message_id)
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      data: {
+        last_message_id: last_message_id
+      },
+      dataType: 'json'
+    })
+    .done(function(new_messages) {
+      new_messages.forEach(function(message){
+        var html = buildHTML(message);
+        $('.messages').append(html)
+      });
+    })
+  }
   function buildHTML(message){
     var date = new Date()
     var url = message.image.url
     var created_at = message.created_at
     var image = url == null ? '' : '<img class="lower-message__image" src= '+ url + '/>';
-    var html = `<div class='message'>
+    var html = `<div class='message' value=${message.id}>
                   <div class='upper-message'>
                     <div class='upper-message__user-name'>
                       ${message.user_name}
