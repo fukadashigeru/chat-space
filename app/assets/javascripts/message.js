@@ -4,7 +4,6 @@ $(function(){
   });
   function update(){
     var last_message_id = $('.message:last').attr('value');
-    console.log(last_message_id)
     $.ajax({
       url: location.href,
       type: 'GET',
