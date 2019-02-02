@@ -43,6 +43,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'capybara'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -86,3 +91,4 @@ gem 'flexbox_rb'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'fog-aws'
