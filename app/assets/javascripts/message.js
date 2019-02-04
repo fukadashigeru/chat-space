@@ -61,9 +61,9 @@ function buildHTML(message){
               </div>
               <div class='lower-meesage'>
                 <p class='lower-message__content'>
-                  ${message.content}
+                  ${content}
                 </p>
-                ${message.image}
+                ${image}
               </div>`
   return html;
 }
