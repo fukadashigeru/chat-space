@@ -1,5 +1,5 @@
 $(function(){
-  setInterval(update, 15000);
+  setInterval(update, 5000);
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -13,19 +13,21 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.form__message').val('')
-      $('#message_image').val('')
-      $('.form__submit').prop('disabled', false);
-      $('.messages').animate({
-        scrollTop: $('.messages').get(0).scrollHeight
-      })
-    })
-    .fail(function(){
-      alert('メッセージを入力してください。');
-      $('.form__submit').prop('disabled', false);
-    })
+      console.log(data.length)
+      if (data.length !== 0  ) {
+        var html = buildHTML(data);
+        $('.messages').append(html)
+        $('.form__message').val('')
+        $('#message_image').val('')
+        $('.form__submit').prop('disabled', false);
+        $('.messages').animate({
+          scrollTop: $('.messages').get(0).scrollHeight
+        })
+      }else{
+        $('.form__submit').prop('disabled', false);
+        alert('メッセージを入力してください。');
+      }
+    });
   });
 });
 function update(){
