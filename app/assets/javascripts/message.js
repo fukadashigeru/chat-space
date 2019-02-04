@@ -49,7 +49,7 @@ function buildHTML(message){
   var date = new Date()
   var url = message.image_url
   var created_at = message.created_at
-  var image = url == null ? '' : '<img class="lower-message__image" src= '+ url;
+  var image = url == null ? '' : '<img class="lower-message__image" src='+ url;
   var html = `<div class='message' value=${message.id}>
                 <div class='upper-message'>
                   <div class='upper-message__user-name'>
