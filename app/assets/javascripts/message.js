@@ -41,13 +41,16 @@ function update(){
     dataType: 'json'
   })
   .done(function(new_messages) {
-    new_messages.forEach(function(message){
-      var html = buildHTML(message);
-      $('.messages').append(html)
-    });
-    $('.messages').animate({
-      scrollTop: $('.messages').get(0).scrollHeight
-    })
+    console.log(new_messages.length)
+    if (new_messages.length !== 0) {
+      new_messages.forEach(function(message){
+        var html = buildHTML(message);
+        $('.messages').append(html)
+      });
+      $('.messages').animate({
+        scrollTop: $('.messages').get(0).scrollHeight
+      })
+    }
   })
 }
 function buildHTML(message){
