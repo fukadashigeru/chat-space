@@ -63,7 +63,7 @@ function buildHTML(message){
                 <p class='lower-message__content'>
                   ${ message.content }
                 </p>
-                ${ image }
+                aaa
               </div>`
   return html;
 }
