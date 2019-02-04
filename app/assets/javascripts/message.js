@@ -45,6 +45,9 @@ function update(){
       var html = buildHTML(message);
       $('.messages').append(html)
     });
+    $('.messages').animate({
+      scrollTop: $('.messages').get(0).scrollHeight
+    })
   })
 }
 function buildHTML(message){
